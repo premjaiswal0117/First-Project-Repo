@@ -29,13 +29,13 @@ except FileNotFoundError:
     pass
 
 while True:
-    menu = int(input("\nWhat do you want to do?\n"
-                         "1. Add student details\n"
-                         "2. Display students\n"
-                         "3. Search name by roll no\n"
-                         "4. Delete student by roll number\n"
-                         "5. Update student marks by roll number\n"
-                         "6. Save and Exit\n\nChoice: "))
+    menu = int(input('''What do you want to do?
+                         1. Add student details
+                         2. Display students
+                         3. Search name by roll no
+                         4. Delete student by roll number
+                         5. Update student marks by roll number
+                         7. Save and Exit\n\nChoice:''' ))
     
     if menu == 1:
         name=input("Enter Name of Student:")
@@ -96,8 +96,10 @@ while True:
             print("Marks updated for", result.name)
         else:
             print("Not found")
-
     elif menu == 6:
+        with open('student.txt','w') as f:
+            pass
+    elif menu == 7:
         save_to_file()
         print("Records Auto-saved. Exiting...")
         break
