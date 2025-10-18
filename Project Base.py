@@ -35,17 +35,17 @@ while True:
                          "3. Search name by roll no\n"
                          "4. Delete student by roll number\n"
                          "5. Update student marks by roll number\n"
-                         "6. Save and Exit\nChoice: "))
+                         "6. Save and Exit\n\nChoice: "))
     
     if menu == 1:
         name=input("Enter Name of Student:")
         try:
-            roll = int(input("Enter Roll No of student: "))
+            roll = int(input("Enter Roll No of Student: "))
         except ValueError:
             print("Invalid input. Please Enter a Number.")
             continue
         try:
-            marks = int(input("Enter Marks: "))
+            marks = int(input("Enter Marks of Student: "))
         except ValueError:
             print("Invalid input. Please Enter a Number.")
             continue
