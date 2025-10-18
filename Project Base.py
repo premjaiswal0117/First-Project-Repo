@@ -29,77 +29,84 @@ except FileNotFoundError:
     pass
 
 while True:
-    menu = int(input('''What do you want to do?
-                         1. Add student details
-                         2. Display students
-                         3. Search name by roll no
-                         4. Delete student by roll number
-                         5. Update student marks by roll number
-                         7. Save and Exit\n\nChoice:''' ))
+    menu = int(input("\nWhat do you want to do?\n"
+                         "1. Add student details\n"
+                         "2. Display students\n"
+                         "3. Search name by roll no\n"
+                         "4. Delete student by roll number\n"
+                         "5. Update student marks by roll number\n"
+                         "6. Delete all data in the file\n"
+                         "7. Save and Exit\n\nChoice: "))
     
     if menu == 1:
         name=input("Enter Name of Student:")
         try:
-            roll = int(input("Enter Roll No of Student: "))
+            roll = int(input("Enter roll no of the Student: "))
         except ValueError:
-            print("Invalid input. Please Enter a Number.")
+            print("Invalid input. Please enter a number.")
             continue
         try:
-            marks = int(input("Enter Marks of Student: "))
+            marks = int(input("Enter marks of the student: "))
         except ValueError:
-            print("Invalid input. Please Enter a Number.")
+            print("Invalid input. Please enter a number.")
             continue
-        print("\nStudent Added in file")
+        print("\nStudent added in file")
         s=Student(name,marks,roll)
         student.append(s)
+        print(f"\nStudent '{name}' added successfully!")
 
     elif menu == 2:
         if not student:
-            print("No Student Added Yet ")
+            print("No student added yet ")
         else:
             for i in student:
                 print(i.display())
 
     elif menu == 3:
         try:
-            search=int(input("Enter the roll No of student you want to search:"))
+            search=int(input("Enter the roll number of student you want to search:"))
         except ValueError:
-            print("Invalid input. Enter a Valid Number")
+            print("Invalid input. Enter a valid number")
             continue
         result=search_by_roll(search)
         if result:
-            print("Found:",result.name)
+            print(" Student found:",result.name)
         else:
             print("Student Not Found")
 
     elif menu == 4:
         try:
-            delete=int(input("Enter the Roll No of Student you want to Delete:"))
+            delete=int(input("Enter the roll no of student you want to delete:"))
         except ValueError:
             print("Invalid input. enter a valid number")
             continue
         result=search_by_roll(delete)
         if result:
-            print(f"{result.name} is Deleted!")
+            print(f"{result.name}has been deleted.")
             student.remove(result)
         else:
             print("Student Not Found")
     elif menu == 5:
         try:
-            update=int(input("Enter Roll No to Update:"))
+            update=int(input("Enter the roll number to update marks: "))
         except ValueError:
-            print("Invalid input. Enter a valid Number")
+            print("Invalid input.Please enter a valid number")
             continue
         result=search_by_roll(update)
         if result:
-            result.marks=int(input("Enter New Marks:"))
+            result.marks=int(input(f"Enter new marks for {result.name}: "))
             print("Marks updated for", result.name)
         else:
-            print("Not found")
+            print("Student not found")
     elif menu == 6:
         with open('student.txt','w') as f:
             pass
+        student.clear()
+        print("All student data has been deleted from memory and file")
     elif menu == 7:
         save_to_file()
-        print("Records Auto-saved. Exiting...")
+        print("Records saved. Exiting...")
         break
+    
+    else:
+        print("Invalid choice. Please enter a number between 1 and 7.")
