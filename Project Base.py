@@ -101,8 +101,11 @@ while True:
     elif menu == 6:
         with open('student.txt','w') as f:
             pass
-        student.clear()
-        print("All student data has been deleted from memory and file")
+        if not student:
+            print("File is already empty")
+        else:
+            student.clear()
+            print("All student data has been deleted from memory and file")
     elif menu == 7:
         save_to_file()
         print("Records saved. Exiting...")
