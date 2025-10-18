@@ -38,16 +38,16 @@ while True:
                          "6. Save and Exit\nChoice: "))
     
     if menu == 1:
-        name=input("Enter name of student:")
+        name=input("Enter Name of Student:")
         try:
-            roll = int(input("Enter roll of student: "))
+            roll = int(input("Enter Roll No of student: "))
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. Please Enter a Number.")
             continue
         try:
-            marks = int(input("Enter marks: "))
+            marks = int(input("Enter Marks: "))
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. Please Enter a Number.")
             continue
         print("\nStudent Added in file")
         s=Student(name,marks,roll)
@@ -55,16 +55,16 @@ while True:
 
     elif menu == 2:
         if not student:
-            print("No student added yet ")
+            print("No Student Added Yet ")
         else:
             for i in student:
                 print(i.display())
 
     elif menu == 3:
         try:
-            search=int(input("Enter the roll no of student you want to search:"))
+            search=int(input("Enter the roll No of student you want to search:"))
         except ValueError:
-            print("Invalid input. enter a valid number")
+            print("Invalid input. Enter a Valid Number")
             continue
         result=search_by_roll(search)
         if result:
@@ -74,21 +74,21 @@ while True:
 
     elif menu == 4:
         try:
-            delete=int(input("Enter the roll no of student you want to Delete:"))
+            delete=int(input("Enter the Roll No of Student you want to Delete:"))
         except ValueError:
             print("Invalid input. enter a valid number")
             continue
         result=search_by_roll(delete)
         if result:
-            print(f"{result.name} is deleted")
+            print(f"{result.name} is Deleted!")
             student.remove(result)
         else:
             print("Student Not Found")
     elif menu == 5:
         try:
-            update=int(input("Enter roll no to update:"))
+            update=int(input("Enter Roll No to Update:"))
         except ValueError:
-            print("Invalid input. enter a valid number")
+            print("Invalid input. Enter a valid Number")
             continue
         result=search_by_roll(update)
         if result:
@@ -99,5 +99,5 @@ while True:
 
     elif menu == 6:
         save_to_file()
-        print("Records auto-saved. Exiting...")
+        print("Records Auto-saved. Exiting...")
         break
